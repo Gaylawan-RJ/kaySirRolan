@@ -10,7 +10,7 @@
 
 :root {
   --main-background: #e3e6e6;
-  --nav-background: #121821;
+  --nav-background: #93b68c;
   --searchbox-color: #febd69;
 }
 
@@ -28,7 +28,7 @@ html {
 
 /* ============= Reusable Classes =========== */
 .first-line {
-  font-size: 12px;
+  font-size: 15px;
   color: #bbb;
   font-weight: 500;
 }
@@ -59,13 +59,18 @@ html {
 
 
 .second-line {
-  font-size: 14px;
+  font-size: 25px;
   color: #fff;
   font-weight: 700;
 }
 
-.ln-height {
-  line-height: 1.1;
+.una{
+
+  .second-line {
+    font-size: 30px;
+    color: #fbfbfb;
+    font-weight: 500;
+  }
 }
 
 .border {
@@ -333,30 +338,18 @@ nav .logo img {
   background-color: #232f3e;
   display: flex;
   align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
 }
-
-@media screen and (max-width: 1160px) {
-  .menuBar {
-    padding: 10px 15px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .menuBar {
-    display: none;
-  }
+.menuBar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .menuBar ul {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-@media screen and (max-width: 1160px) {
-  .menuBar ul {
-    gap: 6px;
-  }
 }
 
 .menuBar i {
@@ -373,14 +366,21 @@ nav .logo img {
   align-items: center;
 }
 
-@media screen and (max-width: 1160px) {
-  .menuBar a {
-    font-size: 13px;
-  }
+.menuBar a:nth-child(1) {
+  font-size: 15px;
+  font-weight: 600;
 }
 
-@media screen and (max-width: 1100px) {
+.menuBar a:nth-child(9) select {
+  font-size: 14px;
+  width: 66px;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
 
+/* Optional: Hide some items on smaller screens */
+@media screen and (max-width: 1100px) {
   .menuBar a:nth-child(12),
   .menuBar a:nth-child(11),
   .menuBar a:nth-child(10),
@@ -388,6 +388,40 @@ nav .logo img {
   .menuBar a:nth-child(3) {
     display: none;
   }
+}
+
+/* ============== MENU BAR ============= */
+.menuBar {
+  padding: 5px 15px;
+  background-color: #232f3e;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+}
+.menuBar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.menuBar ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menuBar i {
+  font-size: 2.7vh;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.menuBar a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
 }
 
 .menuBar a:nth-child(1) {
@@ -403,18 +437,25 @@ nav .logo img {
   color: #fff;
 }
 
-/* QUICK LINK */
+/* Optional: Hide some items on smaller screens */
+@media screen and (max-width: 1100px) {
+  .menuBar a:nth-child(12),
+  .menuBar a:nth-child(11),
+  .menuBar a:nth-child(10),
+  .menuBar a:nth-child(7),
+  .menuBar a:nth-child(3) {
+    display: none;
+  }
+}
+
+/* ============== QUICK LINK ============= */
 .quickLink {
   padding: 5px 30px;
   border-bottom: 0.3vh solid #eee;
   display: flex;
   align-items: center;
-}
-
-@media screen and (max-width: 1100px) {
-  .quickLink {
-    display: none;
-  }
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .quickLink ul {
@@ -423,6 +464,7 @@ nav .logo img {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .quickLink h2 {
@@ -456,167 +498,150 @@ nav .logo img {
   font-size: 18px;
 }
 
-/* HERO PAGE */
-.heroPage {
-  height: 100vh;
-  background: url("cloud.jpg");
-  background-size: cover;
-  background-position: top;
-  display: flex;
-  align-items: end;
+/* Optional: Hide quickLink only on very small screens */
+@media screen and (max-width: 480px) {
+  .quickLink {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 800px) {
-  .heroPage {
-    height: 80vh;
-  }
+
+/* HERO PAGE katong picture giatyyy*/
+.heroPage {
+  min-height: 100vh;
+  background: url("cloud.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2rem;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .linearShade {
-  height: 47vh;
+  height: 30vh;
   width: 100%;
-  background: linear-gradient(transparent, #e3e6e6);
+  background: linear-gradient(to bottom, transparent, #e3e6e6);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: none; /* Ensures clicks pass through if needed */
 }
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1024px) {
+  .heroPage {
+    min-height: 90vh;
+  }
+  .linearShade {
+    height: 35vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroPage {
+    min-height: 80vh;
+    padding-bottom: 1.5rem;
+  }
+  .linearShade {
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heroPage {
+    min-height: 70vh;
+    padding-bottom: 1rem;
+  }
+  .linearShade {
+    height: 45vh;
+  }
+}
+
+
 
 /* CARDS AND PRODUCTS */
 .cards {
-  padding: 0vh 4vh;
-  position: relative;
-  bottom: 50vh;
-  gap: 18px;
-  height: 560px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-@media screen and (min-width: 1750px) {
-  .cards {
-    margin: auto;
-    max-width: 1700px;
-  }
-}
-
-@media screen and (min-width: 1500px) {
-  .cards :nth-child(9) {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1500px) {
-  .cards {
-    height: 1105px;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media screen and (min-width: 1350px) and (max-width: 1500px) {
-  .cards {
-    max-width: 1350px;
-    margin: auto;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .cards {
-    height: 1545px;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .cards :nth-child(9) {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 900px) and (max-width: 1150px) {
-  .cards {
-    max-width: 900px;
-    margin: auto;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .cards {
-    grid-template-columns: 1fr;
-    height: 4104px;
-  }
-}
-
-@media screen and (max-width: 530px) {
-  .cards {
-    height: 3345px;
-  }
-}
-
-.card {
-  padding: 8px;
-  height: 500px;
-  
-  background-color: #a9a7c9;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  padding: 2vh 4vh;
+  max-width: 1700px;
+  margin: auto;
   position: relative;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+/* Individual Card */
+.card {
+  background-color: #a9a7c9;
+  padding: 8px;
   display: flex;
   flex-direction: column;
-}
-
-@media screen and (max-width: 650px) {
-  .card {
-    padding: 10px 30px;
-    height: 85vh;
-  }
-}
-
-@media screen and (max-width: 530px) {
-  .card {
-    padding: 10px px;
-    height: 80vh;
-  }
+  justify-content: space-between;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .card a {
-  position: absolute;
-  bottom: 20px;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   color: #017184;
+  margin-top: auto;
 }
 
 .card a:hover {
-  --red: #c7511f;
-  color: var(--red);
-  text-decoration: 1px solid var(--red) underline;
+  color: #c7511f;
+  text-decoration: underline;
 }
 
 .cardHeading {
-  padding: 6px 0px;
-  line-height: 1.5;
-  font-size: 21px;
-  font-weight: 1000;
-  font-style: bold;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .cardContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  
 }
 
-
+/* Product Image */
 .product img {
   width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
+  border-radius: 6px;
 }
 
+/* Product Text */
 .product p {
-  text-decoration: none;
   font-size: 14px;
   color: #222;
 }
 
-.card:nth-child(1) img {
-  width: 100%;
+/* Media Queries - Optional Fine Tuning */
+@media screen and (max-width: 768px) {
+  .cardContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cards {
+    padding: 1vh 2vh;
+  }
+
+  .card {
+    padding: 10px;
+  }
 }
 
 /* NEW USER */
@@ -1091,33 +1116,27 @@ footer {
   }
 }
 
-/*slide napud ni ywaa gud*/
 
+/* slide ywaa */
 .slider {
-  justify-content: flex-start;
-  height: 250px; /* Adjust the height based on your needs */ 
-  margin-top: -5000px; /* Move the slider up */
-  width: 100%;
-  max-width: 300px;
-  height: 200px;
-  overflow: hidden;
-  margin: auto;
   position: relative;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto; /* Center horizontally */
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
+
 .slides {
-  
-  margin-top: -30px; 
   display: flex;
-  width: 300%; /* 3 images, so 3 * 100% */
+  width: 300%; /* For 3 images */
   height: 100%;
   animation: slide 9s infinite;
 }
 
 .slides img {
- 
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1125,40 +1144,23 @@ footer {
   display: block;
 }
 
-
-.slides {
-  display: flex;
-  width: 300%;
-  height: 100%;
-  object-fit: cover;
-  animation: slide 9s infinite;
-}
-
-.slides img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  flex: 0 0 100%;
-  transition: transform 1s ease;
-}
-
-/* Dots */
+/* Dots Container */
 .dots {
   text-align: center;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .dot {
   display: inline-block;
   height: 10px;
   width: 10px;
-  margin: 0 4px;
+  margin: 0 5px;
   background-color: #bbb;
   border-radius: 50%;
   transition: background-color 0.3s ease;
 }
 
-/* Active dot using animation delay */
+/* Keyframes */
 @keyframes slide {
   0%   { transform: translateX(0%); }
   33%  { transform: translateX(-100%); }
@@ -1170,13 +1172,11 @@ footer {
   0%, 100%   { background-color: #333; }
   33.33%, 66.66% { background-color: #bbb; }
 }
-
 @keyframes dotColor2 {
   0%, 33.33%   { background-color: #bbb; }
   33.34%, 66.66% { background-color: #333; }
   66.67%, 100%   { background-color: #bbb; }
 }
-
 @keyframes dotColor3 {
   0%, 66.66%   { background-color: #bbb; }
   66.67%, 99.99% { background-color: #333; }
@@ -1187,3 +1187,15 @@ footer {
 .dot2 { animation: dotColor2 9s infinite; }
 .dot3 { animation: dotColor3 9s infinite; }
 
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .slider {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slider {
+    aspect-ratio: 16 / 10;
+  }
+}
